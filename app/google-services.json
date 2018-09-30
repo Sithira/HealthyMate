@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "330625838122",
+    "firebase_url": "https://healthymate-2321e.firebaseio.com",
+    "project_id": "healthymate-2321e",
+    "storage_bucket": "healthymate-2321e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330625838122:android:e24fc718281e5e43",
+        "android_client_info": {
+          "package_name": "com.example.user.healthymate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330625838122-lat3h8ip8gf0rqrf2805qlgcs8k21t4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQws3u8N4NNiL3XTVI_MrCjSh6t2eesl8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
