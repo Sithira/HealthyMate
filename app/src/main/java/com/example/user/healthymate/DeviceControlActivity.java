@@ -259,6 +259,7 @@ public class DeviceControlActivity extends Activity implements BluetoothServiceU
 		if (data != null)
 		{
 			
+			// get the user info
 			HealthyMate.mUsersReference.child(HealthyMate.mFirebaseUser.getUid())
 					.addListenerForSingleValueEvent(new ValueEventListener()
 					{
@@ -266,6 +267,7 @@ public class DeviceControlActivity extends Activity implements BluetoothServiceU
 						public void onDataChange(@NonNull DataSnapshot dataSnapshot)
 						{
 							
+							// cast to user object
 							User user = dataSnapshot.getValue(User.class);
 							
 							if (user != null)
@@ -290,7 +292,8 @@ public class DeviceControlActivity extends Activity implements BluetoothServiceU
 									
 									String dp = Double.toString(calculateBloodPressure(data, age));
 									
-									mDataField.setText(dp);
+									// use this
+									mDataField.setText(dp); // data
 									
 								} catch (ParseException e)
 								{

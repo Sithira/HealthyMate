@@ -5,31 +5,24 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.user.healthymate.DataServices.FoodDataService;
+import com.example.user.healthymate.DataServices.APIService;
 import com.example.user.healthymate.HealthyMate;
 import com.example.user.healthymate.R;
 import com.example.user.healthymate.adapters.RecyclerViewAdapter;
 import com.example.user.healthymate.model.Anime;
+import com.example.user.healthymate.pojos.Doctor;
 import com.example.user.healthymate.pojos.Food;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DietActivity extends AppCompatActivity
 {
@@ -56,21 +49,47 @@ public class DietActivity extends AppCompatActivity
 		
 	}
 	
+	/**
+	 * Get all Food data from API
+	 *
+	 */
 	private void fetchData()
 	{
+		// Retrofit
+		APIService service = HealthyMate.getRetrofitInstance().create(APIService.class);
 		
-		FoodDataService service = HealthyMate.getRetrofitInstance().create(FoodDataService.class);
-		
+		// food data
 		Call<List<Food>> foods = service.getFoods();
+		
+		// doctor data
+//		Call<List<Doctor>> doctors = service.getDoctors();
+//
+//		doctors.enqueue(new Callback<List<Doctor>>()
+//		{
+//			@Override
+//			public void onResponse(Call<List<Doctor>> call, Response<List<Doctor>> response)
+//			{
+//				// get data from API Call
+//				List<Doctor> doctorList = response.body();
+//
+//				Doctor doctor = doctorList.get(0);
+//
+//				doctor.getImg();
+//			}
+//
+//			@Override
+//			public void onFailure(Call<List<Doctor>> call, Throwable t)
+//			{
+//
+//			}
+//		});
 		
 		foods.enqueue(new Callback<List<Food>>()
 		{
 			@Override
 			public void onResponse(Call<List<Food>> call, retrofit2.Response<List<Food>> response)
 			{
-				System.out.println(response.body());
-				
-				System.out.println(call.request().url());
+				List<Food> foodList = response.body();
 			}
 			
 			@Override
